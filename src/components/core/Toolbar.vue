@@ -88,16 +88,35 @@ export default {
 }
 </script>
 
+
 <style>
-  #core-toolbar a {
-    text-decoration: none;
-  }
-  .v-toolbar{
-    margin-top: 0px;
-    margin-bottom: 0px !important;
-  }
-  .v-toolbar__content{
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-  }
+#core-toolbar a {
+  text-decoration: none;
+  color: #32363acf;
+  font-size: 30px;
+}
+.v-toolbar {
+  margin-top: 0px;
+  margin-bottom: 0px !important;
+}
+.v-toolbar__content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.mdi-view-list:before {
+  font-size: 30px;
+  color: #0000009e;
+}
+.v-btn.default.v-btn--simple i,
+.v-btn.default.v-btn--simple:hover i,
+.v-btn.default.v-btn--simple:focus i,
+.v-btn.default.v-btn--simple:active i,
+.v-btn.default.v-btn--simple.active i,
+.v-btn.default.v-btn--simple:active:focus i,
+.v-btn.default.v-btn--simple:active:hover i,
+.v-btn.default.v-btn--simple.active:focus i,
+.v-btn.default.v-btn--simple.active:hover i {
+  font-size: 30px;
+}
 </style>
+

@@ -12,7 +12,7 @@
 export default {
   metaInfo () {
     return {
-      title: 'Modelo template'
+      title: 'Template Front'
     }
   }
 }

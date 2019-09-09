@@ -163,22 +163,26 @@ export default {
   }
 }
 
-.logo .v-list__tile--avatar{
+.logo .v-list__tile--avatar {
   padding-bottom: 0px !important;
 }
 
-.v-navigation-drawer .v-list .v-avatar{
+.v-navigation-drawer .v-list .v-avatar {
   background-color: white;
- }
+}
 
-.v-list-item{
+.v-list-item {
   margin: 5px 15px 5px !important;
 }
 
-.v-list__group__header{
+.v-list__group__header {
   margin-left: 20px !important;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
 }
 
+.v-navigation-drawer .v-list .v-list-item .v-list__tile.v-list__tile--active.primary{
+  color: white;
+}
 </style>
+
