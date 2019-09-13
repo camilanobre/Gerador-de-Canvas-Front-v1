@@ -20,8 +20,7 @@
       >
         <v-list-tile-avatar
           size="70"
-          style="margin: auto; display: block"
-        >
+          style="margin:auto; display: block">
           <v-img
             :src="logo"
             height="85"
@@ -31,45 +30,16 @@
         </v-list-tile-avatar>
       </v-list-tile>
       <v-list-tile>
-        <v-list-tile-title style="text-align: center">Sistema Pessoas</v-list-tile-title>
+        <div class="posicionamentoExterno">
+          <v-list class="posicionamentoInterno"> Gerador de Canvas <v-icon color="tertiary">mdi-emoticon-cool</v-icon></v-list>
+        </div>
       </v-list-tile>
       <v-divider />
-      <template>
-        <v-list-tile
-          :to="homePage.to"
-          :active-class="color"
-          avatar
-          class="v-list-item"
-        >
-          <v-list-tile-action>
-            <v-icon>{{ homePage.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title v-text="homePage.text" />
-        </v-list-tile>
-      </template>
-      <template>
-        <v-list-tile
-          :to="page3.to"
-          :active-class="color"
-          avatar
-          class="v-list-item"
-        >
-          <v-list-tile-action>
-            <v-icon>{{ page3.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title v-text="page3.text" />
-        </v-list-tile>
-      </template>
-      <v-list-group
-        no-action
+      <div
+        v-for="(link, i) in links"
+        :key="i"
       >
-        <template v-slot:activator>
-          <v-icon>mdi-pencil-box</v-icon>
-          <p class="v-list-item">Button Select</p>
-        </template>
         <v-list-tile
-          v-for="(link, i) in buttonSelect"
-          :key="i"
           :to="link.to"
           :active-class="color"
           avatar
@@ -80,32 +50,47 @@
           </v-list-tile-action>
           <v-list-tile-title v-text="link.text" />
         </v-list-tile>
-      </v-list-group>
+        <div v-show="link.divider == true">
+          <v-divider />
+        </div>
+      </div>
     </v-layout>
   </v-navigation-drawer>
 </template>
 
 <script>
-// Utilities
+
 import { mapMutations, mapState } from 'vuex'
 
 export default {
   data: () => ({
-    logo: './img/logo-prefeitura1.png',
-    homePage: { to: '/', icon: 'mdi-monitor', text: 'Home' },
-    buttonSelect: [
+    perfil: '',
+    logo: './img/idea.png',
+    links: [
       {
-        to: '/pagina1',
-        icon: 'mdi-clipboard-check',
-        text: 'Pagina 1'
+        to: '/',
+        icon: 'mdi-home-circle',
+        text: 'Página Inicial',
+        divider: true
       },
       {
-        to: '/pagina2',
-        icon: 'mdi-clipboard-text',
-        text: 'Pagina 2'
-      }
+        to: '/iniciarProjeto',
+        icon: 'mdi-lightbulb-on-outline',
+        text: 'Iniciar um projeto',
+        divider: true
+      },
+      {
+        to: '/comoCriar',
+        icon: 'mdi-help',
+        text: 'Como criar o Canvas?',
+        divider: true
+      },
+      {
+        to: '/sobre',
+        icon: 'mdi-human-greeting',
+        text: 'Sobre nós'
+      },
     ],
-    page3: { to: '/pagina3', icon: 'mdi-clipboard-outline', text: 'Pagina 3' },
     responsive: false
   }),
   computed: {
@@ -120,7 +105,16 @@ export default {
     },
     items () {
       return this.$t('Layout.View.items')
-    }
+    },
+    ...mapState({
+      account: state => state.account
+    })
+  },
+  created () {
+    this.getUsuarioStorage()
+   /*  if (!this.usuario.perfilSuper) {
+      this.validaPerfil()
+    } */
   },
   mounted () {
     this.onResponsiveInverted()
@@ -137,6 +131,52 @@ export default {
       } else {
         this.responsive = false
       }
+    },
+    getUsuarioStorage () {
+      let usuario = JSON.parse(localStorage.getItem('usuario'))
+      this.usuario = usuario.value
+    },
+/*     validaPerfil () {
+      let ids = []
+      for (let i = 0; i < this.links.length; i++) {
+        if (!this.links[i].title && this.links[i].text !== 'Sair') {
+          if (!this.verificarSeExiste(this.links[i].text)) {
+            ids.push(i)
+          }
+        }
+      }
+      this.remontaMenu(ids)
+    }, */
+    verificarSeExiste (item) {
+      let objJsonStr = JSON.parse(atob(this.usuario.moduloDescricaoFuncao))
+      let qtd = Object.keys(objJsonStr).length
+      let existe = false
+      for (let i = 0; i < qtd; i++) {
+        if (decodeURIComponent(escape(objJsonStr[i].DescricaoModulo)) === item) {
+          existe = true
+          break
+        } else {
+          existe = false
+        }
+      }
+      return existe
+    },
+    remontaMenu (ids) {
+      let menuAntigo = this.links
+      this.links = []
+      for (let i = 0; i < menuAntigo.length; i++) {
+        if (this.verificaRecriaMenu(i, ids)) {
+          this.links.push(menuAntigo[i])
+        }
+      }
+    },
+    verificaRecriaMenu (item, ids) {
+      for (let i = 0; i < ids.length; i++) {
+        if (item === ids[i]) {
+          return false
+        }
+      }
+      return true
     }
   }
 }
@@ -185,4 +225,3 @@ export default {
   color: white;
 }
 </style>
-

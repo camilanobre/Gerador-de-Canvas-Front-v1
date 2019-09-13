@@ -4,7 +4,8 @@
 
     flat
     prominent
-    style="background: #aed0bd;"
+    style="background: background-color: #ffffff;
+background-image: linear-gradient(0deg, #ffffff 0%, #E2FFFA 100%);"
   >
     <div class="v-toolbar-title">
       <v-toolbar-title

@@ -10,6 +10,7 @@
         sm12
         lg4
       >
+      aosuhdiuahsd teste home
       </v-flex>
     </v-layout>
   </v-container>
