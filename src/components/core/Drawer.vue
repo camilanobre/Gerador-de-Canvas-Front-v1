@@ -31,7 +31,7 @@
       </v-list-tile>
       <v-list-tile>
         <div class="posicionamentoExterno">
-          <v-list class="posicionamentoInterno"> Gerador de Canvas <v-icon color="tertiary">mdi-emoticon-cool</v-icon></v-list>
+          <v-list class="posicionamentoInterno"><v-icon color="tertiary">mdi-emoticon-devil</v-icon> Gerador de Canvas <v-icon color="tertiary">mdi-emoticon-cool</v-icon></v-list>
         </div>
       </v-list-tile>
       <v-divider />
