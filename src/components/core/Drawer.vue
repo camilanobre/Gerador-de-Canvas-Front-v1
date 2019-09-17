@@ -80,6 +80,12 @@ export default {
         divider: true
       },
       {
+        to: '/meusProjetos',
+        icon: 'mdi-puzzle',
+        text: 'Meus Projetos',
+        divider: true
+      },
+      {
         to: '/comoCriar',
         icon: 'mdi-help',
         text: 'Como criar o Canvas?',

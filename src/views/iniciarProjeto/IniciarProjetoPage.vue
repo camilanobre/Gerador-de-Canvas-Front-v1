@@ -11,8 +11,7 @@
                   <v-divider />
                   <v-stepper-step :complete="passo > 2" step="2">Segunda Etapa</v-stepper-step>
                   <v-divider />
-                  <v-stepper-step :complete="passo > 2" step="2">Terceira Etapa</v-stepper-step>
-                  <v-divider />
+                  <v-stepper-step :complete="passo > 3" step="3">Terceira Etapa</v-stepper-step>
                 </v-stepper-header>
                 <v-stepper-items>
                     <!-- primeiro passo -->
@@ -63,13 +62,6 @@
                           </template>
                         </v-textarea>
                       </v-flex>
-                    </v-card>
-                    <v-btn color="primary" @click="passo = 2">Continuar</v-btn>
-                    <v-btn color="red darken-1" to="/">Cancelar</v-btn>
-                  </v-stepper-content>
-                  <!-- passo dois -->
-                   <v-stepper-content step="2">
-                    <v-card class="mb-5" height="100%">
                       <v-flex xs12>
                         <v-textarea
                           label="Canais de Distribuição"
@@ -83,6 +75,13 @@
                           </template>
                         </v-textarea>
                       </v-flex>
+                    </v-card>
+                    <v-btn color="primary" @click="passo = 2">Continuar</v-btn>
+                    <v-btn color="red darken-1" to="/">Cancelar</v-btn>
+                  </v-stepper-content>
+                  <!-- passo dois -->
+                   <v-stepper-content step="2">
+                    <v-card class="mb-5" height="100%">
                       <v-flex xs12>
                         <v-textarea
                           label="Atividades Chaves"
