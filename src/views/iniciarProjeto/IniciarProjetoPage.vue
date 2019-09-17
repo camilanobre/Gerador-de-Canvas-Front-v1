@@ -18,7 +18,13 @@
                     <!-- primeiro passo -->
                   <v-stepper-content step="1">
                     <v-card class="mb-5" height="100%">
-                      <v-flex xs12>
+                  <v-flex xs12 sm6 md8>
+                       <v-text-field
+                      label="Nome do Projeto"
+                      placeholder="Qual será o nome do seu projeto?"
+                      ></v-text-field>
+                      </v-flex>
+                        <v-flex xs12>
                         <v-textarea
                           label="Proposta de Valor"
                           placeholder="Informe a sua proposta de valor"
